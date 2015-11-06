@@ -7698,6 +7698,34 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 <rectangle x1="-2.7432" y1="-3.6576" x2="-1.8796" y2="-1.8034" layer="51"/>
 <rectangle x1="1.8796" y1="-3.6576" x2="2.7432" y2="-1.8034" layer="51"/>
 </package>
+<package name="SMBG">
+<description>&lt;b&gt;DO-214AA GULL-WING&lt;/b&gt;&lt;p&gt;
+Source: www.rsonline.de .. SMBJ12/C/15/C/24/C/30/C/5.0/C/7.5/C Voltage Suppressor. Data Sheet</description>
+<wire x1="2.24" y1="1.85" x2="2.24" y2="-1.85" width="0.1016" layer="21"/>
+<wire x1="2.24" y1="-1.85" x2="-2.24" y2="-1.85" width="0.1016" layer="21"/>
+<wire x1="-2.24" y1="-1.85" x2="-2.24" y2="1.85" width="0.1016" layer="21"/>
+<wire x1="-2.24" y1="1.85" x2="2.24" y2="1.85" width="0.1016" layer="21"/>
+<smd name="C" x="-3.17" y="0" dx="1.27" dy="2.16" layer="1"/>
+<smd name="A" x="3.17" y="0" dx="1.27" dy="2.16" layer="1" rot="R180"/>
+<text x="-1.905" y="2.54" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.81" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-3.24" y1="-1.05" x2="-2.23" y2="1.05" layer="51"/>
+<rectangle x1="2.24" y1="-1.05" x2="3.24" y2="1.05" layer="51"/>
+</package>
+<package name="SMBJ">
+<description>&lt;b&gt;DO-214AA Modified J_BEND&lt;/b&gt;&lt;p&gt;
+Source: www.rsonline.de .. SMBJ12/C/15/C/24/C/30/C/5.0/C/7.5/C Voltage Suppressor. Data Sheet</description>
+<wire x1="2.24" y1="1.92" x2="2.24" y2="-1.92" width="0.1016" layer="51"/>
+<wire x1="2.24" y1="-1.92" x2="-2.24" y2="-1.92" width="0.1016" layer="21"/>
+<wire x1="-2.24" y1="-1.92" x2="-2.24" y2="1.92" width="0.1016" layer="51"/>
+<wire x1="-2.24" y1="1.92" x2="2.24" y2="1.92" width="0.1016" layer="21"/>
+<smd name="C" x="-2.03" y="0" dx="1.78" dy="2.16" layer="1"/>
+<smd name="A" x="2.04" y="0" dx="1.78" dy="2.16" layer="1" rot="R180"/>
+<text x="-1.905" y="2.54" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.81" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-2.8" y1="-1.1" x2="-2.25" y2="1.1" layer="51"/>
+<rectangle x1="2.25" y1="-1.1" x2="2.8" y2="1.1" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="D">
@@ -7724,6 +7752,19 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 <text x="-1.778" y="-3.429" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="A" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
 <pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+<symbol name="SUPPRESSOR">
+<wire x1="1.27" y1="-1.27" x2="0" y2="1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="1.27" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.905" x2="1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="0" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-1.27" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="1.27" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="0.635" width="0.254" layer="94"/>
+<text x="2.794" y="1.905" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.794" y="-0.889" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="A" x="0" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
+<pin name="C" x="0" y="2.54" visible="off" length="short" direction="pas" rot="R270"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -8499,6 +8540,32 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="SUPPRESSOR-" prefix="D" uservalue="yes">
+<description>&lt;b&gt;Suppressor diode&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="SUPPRESSOR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="SMBG" package="SMBG">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="SMBJ" package="SMBJ">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="inductors">
@@ -8888,7 +8955,7 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 </class>
 </classes>
 <parts>
-<part name="C1" library="rcl" deviceset="C-EU" device="C1206" value="4.7uF"/>
+<part name="C1" library="rcl" deviceset="C-EU" device="C0805" value="4.7uF"/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="24K9"/>
 <part name="R2" library="rcl" deviceset="R-EU_" device="R1210" value="0R05"/>
 <part name="D1" library="diode" deviceset="DIODE-" device="SMC"/>
@@ -8898,8 +8965,8 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="L1" library="inductors" deviceset="DR127" device=""/>
 <part name="OUT" library="wago-2060" deviceset="WAGO-2060-402" device=""/>
-<part name="R5" library="rcl" deviceset="R-EU_" device="R1210" value="0R02"/>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R1210" value="NP"/>
+<part name="R5" library="rcl" deviceset="R-EU_" device="R1210" value="NP"/>
+<part name="R6" library="rcl" deviceset="R-EU_" device="R1210" value="0R02"/>
 <part name="C5" library="rcl" deviceset="C-EU" device="C1210" value="1uF"/>
 <part name="C6" library="rcl" deviceset="C-EU" device="C1210" value="1uF"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
@@ -8908,7 +8975,7 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="C7" library="rcl" deviceset="C-EU" device="C0805" value="0.1uF"/>
-<part name="U$1" library="power-mosfet" deviceset="N_MOSFET_TO252" device=""/>
+<part name="T1" library="power-mosfet" deviceset="N_MOSFET_TO252" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="IC1" library="onsemi-led-driver" deviceset="NCL30105" device="DR2G"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
@@ -8919,7 +8986,11 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
-<part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="24K9"/>
+<part name="R3" library="rcl" deviceset="R-EU_" device="R1206" value="100K"/>
+<part name="R4" library="rcl" deviceset="R-EU_" device="R1206" value="fuse 10A"/>
+<part name="D3" library="diode" deviceset="SUPPRESSOR-" device="SMBJ"/>
+<part name="GND13" library="supply1" deviceset="GND" device=""/>
+<part name="C8" library="rcl" deviceset="C-EU" device="C1210" value="1uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -8928,26 +8999,26 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <instances>
 <instance part="C1" gate="G$1" x="10.16" y="58.42"/>
 <instance part="R1" gate="G$1" x="25.4" y="33.02" rot="R90"/>
-<instance part="R2" gate="G$1" x="93.98" y="33.02"/>
+<instance part="R2" gate="G$1" x="93.98" y="40.64"/>
 <instance part="D1" gate="G$1" x="86.36" y="63.5" rot="R90"/>
 <instance part="C3" gate="G$1" x="-63.5" y="66.04"/>
 <instance part="C4" gate="G$1" x="-53.34" y="66.04"/>
 <instance part="GND4" gate="1" x="-53.34" y="58.42"/>
 <instance part="GND5" gate="1" x="-63.5" y="58.42"/>
 <instance part="L1" gate="G$1" x="104.14" y="58.42"/>
-<instance part="OUT" gate="G$1" x="127" y="71.12"/>
-<instance part="R5" gate="G$1" x="93.98" y="25.4"/>
-<instance part="R6" gate="G$1" x="93.98" y="40.64"/>
+<instance part="OUT" gate="G$1" x="137.16" y="71.12"/>
+<instance part="R5" gate="G$1" x="93.98" y="33.02"/>
+<instance part="R6" gate="G$1" x="93.98" y="25.4"/>
 <instance part="C5" gate="G$1" x="-43.18" y="66.04"/>
 <instance part="C6" gate="G$1" x="-33.02" y="66.04"/>
 <instance part="GND8" gate="1" x="-33.02" y="58.42"/>
 <instance part="GND9" gate="1" x="-43.18" y="58.42"/>
-<instance part="IN" gate="G$1" x="-88.9" y="71.12" rot="MR0"/>
-<instance part="GND10" gate="1" x="-76.2" y="58.42"/>
+<instance part="IN" gate="G$1" x="-109.22" y="71.12" rot="MR0"/>
+<instance part="GND10" gate="1" x="-99.06" y="58.42"/>
 <instance part="GND1" gate="1" x="35.56" y="25.4"/>
 <instance part="C7" gate="G$1" x="22.86" y="58.42"/>
-<instance part="U$1" gate="G$1" x="83.82" y="50.8"/>
-<instance part="GND2" gate="1" x="86.36" y="17.78"/>
+<instance part="T1" gate="G$1" x="83.82" y="50.8"/>
+<instance part="GND2" gate="1" x="86.36" y="20.32"/>
 <instance part="IC1" gate="G$1" x="60.96" y="48.26"/>
 <instance part="GND3" gate="1" x="25.4" y="25.4"/>
 <instance part="C2" gate="G$1" x="12.7" y="35.56"/>
@@ -8958,6 +9029,10 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <instance part="GND11" gate="1" x="22.86" y="50.8"/>
 <instance part="GND12" gate="1" x="0" y="25.4"/>
 <instance part="R3" gate="G$1" x="-15.24" y="53.34" rot="R90"/>
+<instance part="R4" gate="G$1" x="-91.44" y="71.12"/>
+<instance part="D3" gate="G$1" x="-81.28" y="63.5"/>
+<instance part="GND13" gate="1" x="-81.28" y="58.42"/>
+<instance part="C8" gate="G$1" x="119.38" y="66.04"/>
 </instances>
 <busses>
 </busses>
@@ -8982,14 +9057,14 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <segment>
 <pinref part="IN" gate="G$1" pin="2"/>
 <pinref part="GND10" gate="1" pin="GND"/>
-<wire x1="-81.28" y1="68.58" x2="-76.2" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="-76.2" y1="68.58" x2="-76.2" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="-101.6" y1="68.58" x2="-99.06" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-99.06" y1="68.58" x2="-99.06" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R5" gate="G$1" pin="1"/>
 <pinref part="GND2" gate="1" pin="GND"/>
+<pinref part="R6" gate="G$1" pin="1"/>
+<wire x1="86.36" y1="25.4" x2="86.36" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="25.4" x2="86.36" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="25.4" x2="86.36" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
@@ -9019,6 +9094,10 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <pinref part="GND12" gate="1" pin="GND"/>
 <wire x1="0" y1="33.02" x2="0" y2="27.94" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="D3" gate="G$1" pin="A"/>
+<pinref part="GND13" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="VIN" class="0">
 <segment>
@@ -9029,54 +9108,62 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <wire x1="-43.18" y1="71.12" x2="-53.34" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="-53.34" y1="71.12" x2="-63.5" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="-63.5" y1="68.58" x2="-63.5" y2="71.12" width="0.1524" layer="91"/>
-<junction x="-63.5" y="71.12"/>
 <pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="-53.34" y1="68.58" x2="-53.34" y2="71.12" width="0.1524" layer="91"/>
 <junction x="-53.34" y="71.12"/>
-<wire x1="-63.5" y1="71.12" x2="-81.28" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="1"/>
 <wire x1="-43.18" y1="68.58" x2="-43.18" y2="71.12" width="0.1524" layer="91"/>
 <junction x="-43.18" y="71.12"/>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="-33.02" y1="68.58" x2="-33.02" y2="71.12" width="0.1524" layer="91"/>
 <junction x="-33.02" y="71.12"/>
-<pinref part="IN" gate="G$1" pin="1"/>
 <pinref part="D1" gate="G$1" pin="C"/>
 <wire x1="86.36" y1="66.04" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
 <junction x="86.36" y="71.12"/>
 <pinref part="OUT" gate="G$1" pin="1"/>
-<wire x1="119.38" y1="71.12" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="71.12" x2="119.38" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="Q1" gate="G$1" pin="C"/>
+<wire x1="119.38" y1="71.12" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="-5.08" y1="63.5" x2="-15.24" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="63.5" x2="-15.24" y2="71.12" width="0.1524" layer="91"/>
 <junction x="-15.24" y="71.12"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="-15.24" y1="58.42" x2="-15.24" y2="63.5" width="0.1524" layer="91"/>
 <junction x="-15.24" y="63.5"/>
+<pinref part="R4" gate="G$1" pin="2"/>
+<pinref part="D3" gate="G$1" pin="C"/>
+<wire x1="-86.36" y1="71.12" x2="-81.28" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-81.28" y1="71.12" x2="-81.28" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="-81.28" y1="71.12" x2="-63.5" y2="71.12" width="0.1524" layer="91"/>
+<junction x="-81.28" y="71.12"/>
+<junction x="-63.5" y="71.12"/>
+<pinref part="C8" gate="G$1" pin="1"/>
+<wire x1="119.38" y1="68.58" x2="119.38" y2="71.12" width="0.1524" layer="91"/>
+<junction x="119.38" y="71.12"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="R6" gate="G$1" pin="1"/>
-<pinref part="U$1" gate="G$1" pin="S"/>
-<wire x1="86.36" y1="40.64" x2="88.9" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="T1" gate="G$1" pin="S"/>
 <wire x1="86.36" y1="45.72" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
 <junction x="86.36" y="40.64"/>
 <pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="88.9" y1="33.02" x2="86.36" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="33.02" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="40.64" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="CS"/>
 <wire x1="78.74" y1="40.64" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="R5" gate="G$1" pin="1"/>
+<wire x1="88.9" y1="33.02" x2="86.36" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="33.02" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
 <segment>
 <pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="99.06" y1="40.64" x2="101.6" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="99.06" y1="33.02" x2="101.6" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="33.02" x2="101.6" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="99.06" y1="40.64" x2="101.6" y2="40.64" width="0.1524" layer="91"/>
-<pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="99.06" y1="25.4" x2="101.6" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="25.4" x2="101.6" y2="33.02" width="0.1524" layer="91"/>
 <junction x="101.6" y="33.02"/>
@@ -9084,7 +9171,7 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 </net>
 <net name="N$5" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="D"/>
+<pinref part="T1" gate="G$1" pin="D"/>
 <wire x1="86.36" y1="55.88" x2="86.36" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="86.36" y1="58.42" x2="86.36" y2="60.96" width="0.1524" layer="91"/>
@@ -9096,16 +9183,20 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <net name="N$7" class="0">
 <segment>
 <pinref part="L1" gate="G$1" pin="2"/>
-<wire x1="111.76" y1="58.42" x2="116.84" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="58.42" x2="116.84" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="58.42" x2="119.38" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="58.42" x2="127" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="127" y1="58.42" x2="127" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="OUT" gate="G$1" pin="2"/>
-<wire x1="116.84" y1="68.58" x2="119.38" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="127" y1="68.58" x2="129.54" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="C8" gate="G$1" pin="2"/>
+<wire x1="119.38" y1="60.96" x2="119.38" y2="58.42" width="0.1524" layer="91"/>
+<junction x="119.38" y="58.42"/>
 </segment>
 </net>
 <net name="N$1" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="DRV"/>
-<pinref part="U$1" gate="G$1" pin="G"/>
+<pinref part="T1" gate="G$1" pin="G"/>
 <wire x1="78.74" y1="48.26" x2="81.28" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -9156,6 +9247,13 @@ controller can drive a MOSFET up to a 500 kHz switching frequency.</description>
 <wire x1="0" y1="43.18" x2="-15.24" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="43.18" x2="-15.24" y2="48.26" width="0.1524" layer="91"/>
 <junction x="0" y="43.18"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="IN" gate="G$1" pin="1"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="-101.6" y1="71.12" x2="-96.52" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
